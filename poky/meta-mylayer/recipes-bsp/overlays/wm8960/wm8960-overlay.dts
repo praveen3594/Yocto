@@ -1,0 +1,79 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/raspberrypi-clock.h>
+
+fragment@0 {
+    target = <&i2c1>;
+    __overlay__ {
+        status = "okay";
+
+        wm8960: wm8960@1a {
+            compatible = "wlf,wm8960";
+            reg = <0x1a>;
+            #sound-dai-cells = <0>;
+
+
+             /* ================================
+               ADDED FOR CLEAN RECORDING
+               ================================ */
+            wlf,in1l-mic;           // Left mic input
+            wlf,in1r-mic;           // Right mic input
+            wlf,micbias-lvl = <0x2>; // Mic bias voltage (safe)
+
+            clocks = <&clks BCM2835_CLOCK_GP0>;
+            clock-names = "mclk";
+            system-clock-frequency = <12288000>;
+
+            pinctrl-names = "default";
+            pinctrl-0 = <&clk0_pins>;
+            
+
+            clocks = <&clks BCM2835_CLOCK_GP0>;
+            clock-names = "mclk";
+            system-clock-frequency = <12288000>;
+
+            pinctrl-names = "default";
+            pinctrl-0 = <&clk0_pins>;
+
+        };
+    };
+};
+
+fragment@1 {
+    target = <&i2s1>;
+    __overlay__ {
+        status = "okay";
+    };
+};
+
+fragment@2 {
+    target-path = "/";
+    __overlay__ {
+        wm8960_sound: sound {
+            compatible = "simple-audio-card";
+            simple-audio-card,name = "wm8960-soundcard";
+            simple-audio-card,format = "i2s";
+            simple-audio-card,bitclock-master = <&codec>;
+            simple-audio-card,frame-master = <&codec>;
+            simple-audio-card,cpu {
+                sound-dai = <&i2s1>;
+            };
+
+            codec: simple-audio-card,codec {
+                sound-dai = <&wm8960>;
+            };
+    
+        };
+    };
+};
+
+fragment@3 {
+    target = <&gpio>;
+    __overlay__ {
+        clk0_pins: clk0_pins {
+            brcm,pins = <4>;     // GPIO4 (GPCLK0)
+            brcm,function = <4>; // ALT0
+        };
+    };
+};
