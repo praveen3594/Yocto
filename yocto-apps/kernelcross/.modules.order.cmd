@@ -1,0 +1,1 @@
+cmd_/home/praveen/Yocto2/yocto-apps/kernelcross/modules.order := {   echo /home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.ko; :; } | awk '!x[$$0]++' - > /home/praveen/Yocto2/yocto-apps/kernelcross/modules.order

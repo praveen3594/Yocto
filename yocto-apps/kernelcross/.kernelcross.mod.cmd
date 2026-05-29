@@ -1,0 +1,1 @@
+cmd_/home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.mod := { echo  /home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.o;  echo; } > /home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.mod

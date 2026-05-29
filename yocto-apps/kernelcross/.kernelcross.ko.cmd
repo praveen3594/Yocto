@@ -1,0 +1,1 @@
+cmd_/home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.ko := arm-poky-linux-gnueabi-ld -r -EL -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.ko /home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.o /home/praveen/Yocto2/yocto-apps/kernelcross/kernelcross.mod.o;  true

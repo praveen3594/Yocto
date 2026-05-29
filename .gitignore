@@ -1,0 +1,19 @@
+# Yocto build output
+build/tmp/
+build/cache/
+build/sstate-cache/
+build/downloads/
+build/deploy/
+
+# BitBake
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# Temporary files
+tmp/

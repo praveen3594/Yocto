@@ -1,0 +1,1 @@
+cmd_/home/praveen/Yocto2/yocto-apps/kernelcross/Module.symvers := sed 's/\.ko$$/\.o/' /home/praveen/Yocto2/yocto-apps/kernelcross/modules.order | scripts/mod/modpost -m -a  -o /home/praveen/Yocto2/yocto-apps/kernelcross/Module.symvers -e -i Module.symvers   -T -
